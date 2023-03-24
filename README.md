@@ -4,7 +4,7 @@ Simple static website for a tutorial about Github Actions.
 
 ## Backlog
 
-TBD
+npm start does not open a new browser tab, huh? Why?
 
 ## License
 
