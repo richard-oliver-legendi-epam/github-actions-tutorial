@@ -9,13 +9,14 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   plugins: [
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({
+        template: 'src/assets/index.html'
+    })
   ],
   devServer: {
     static: path.resolve(__dirname, 'dist'),
     port: 8080,
-    hot: true,
-    open: true
+    hot: true
   },
   module: {
     rules: [
