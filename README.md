@@ -25,6 +25,7 @@ Github Actions
 About GitHub-hosted runners (Ubuntu versions for the workflow.yml) https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners
 
 Actions
+- https://docs.github.com/en/actions/quickstart
 - https://github.com/actions/setup-node
 - https://github.com/actions/cache
 - https://github.com/aws-actions/configure-aws-credentials
