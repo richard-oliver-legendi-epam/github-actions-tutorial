@@ -15,7 +15,7 @@ This source code is licensed under the ISC license found in the LICENSE file in 
 ## Commands
 
 npm run start
- 
+
 npm run build
 
 ## References
@@ -29,5 +29,8 @@ Actions
 - https://github.com/actions/cache
 - https://github.com/aws-actions/configure-aws-credentials
 - https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+TypeScript
+- https://blog.logrocket.com/using-webpack-typescript/
 
 ## TMP
