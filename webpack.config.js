@@ -3,15 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path')
 
 module.exports = {
-  //entry: './src/js/main.js',
   entry: './src/ts/index.ts',
   devtool:'source-map',
-  resolve: { extensions: ['.ts'] },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
   output: {
-    chunkFilename: '[name].js',
     filename: '[name].js',
-
-    //filename: 'main.js',
     path: path.resolve(__dirname, 'dist')
   },
   plugins: [
@@ -47,13 +45,13 @@ module.exports = {
           },
           {
             loader: 'sass-loader'
-          },
-          {
-            test: /\.ts$/,
-            exclude: [/node_modules/],
-            loader: 'ts-loader'
           }
         ]
+      },
+      {
+        test: /\.ts?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       }
     ]
   }
