@@ -2,6 +2,8 @@
 
 Simple static website for a tutorial about Github Actions.
 
+[![.github/workflows/learn-github-actions.yml](https://github.com/richard-oliver-legendi-epam/github-actions-tutorial/actions/workflows/learn-github-actions.yml/badge.svg)](https://github.com/richard-oliver-legendi-epam/github-actions-tutorial/actions/workflows/learn-github-actions.yml)
+
 ## Backlog
 
 npm start does not open a new browser tab, huh? Why?
