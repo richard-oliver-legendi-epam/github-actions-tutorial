@@ -1,21 +1,14 @@
-name: GitHub Actions Demo
-on: [push]
+on:
+  issues:
+    types:
+      - opened
+
 jobs:
-  build:
+  label_issue:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [12, 14]
     steps:
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node }}
-      - name: Cache node modules
-        uses: actions/cache@v3
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
+      - env:
+          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+        run: |
+          gh issue edit $ISSUE_URL --add-label "triage"
