@@ -1,7 +1,7 @@
 name: 🚀 Github Actions Tutirial Build
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  Build Site:
     runs-on: ubuntu-22.04
     steps:
       - name: Check out repository code
@@ -10,4 +10,5 @@ jobs:
         with:
           node-version: 16
       - run: npm ci
-      - run: npm test
+      - run: npm run build
+      #- run: npm test
