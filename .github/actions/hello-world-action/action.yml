@@ -1,4 +1,4 @@
 name: 'Test action'
 runs:
   using: 'node12'
-  main: echo "🎉 The job was automatically triggered by an event."
+  #main: echo "🎉 The job was automatically triggered by an event."
