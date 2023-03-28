@@ -18,4 +18,3 @@ jobs:
         run: npm install -g bats
       - name: Testing bats version
         run: bats -v
-      - uses: ./.github/actions/hello-world-action
