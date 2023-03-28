@@ -1,4 +1,4 @@
-name: 'Quote Of The Day'
+name: 'Test action'
 runs:
-  using: 'node12' #currently only supports docker or node12
+  using: 'node12'
   main: echo "🎉 The job was automatically triggered by an event."
