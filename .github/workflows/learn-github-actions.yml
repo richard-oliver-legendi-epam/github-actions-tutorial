@@ -14,3 +14,11 @@ jobs:
         with:
           name: output-log-file
           path: output.log
+jobs:
+  example-job2:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: output-log-file
