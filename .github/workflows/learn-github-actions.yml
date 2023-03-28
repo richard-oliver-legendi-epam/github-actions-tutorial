@@ -3,7 +3,13 @@ run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
 jobs:
   example-job:
-    runs-on: ubuntu-22.04
+    name: Save output
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-
+      - shell: bash
+        run: |
+          expr 1 + 1 > output.log
+      - name: Upload output file
+        uses: actions/upload-artifact@v3
+        with:
+          name: output-log-file
+          path: output.log
