@@ -5,6 +5,5 @@ jobs:
   example-job:
     runs-on: ubuntu-22.04
     steps:
-      - name: Run build script
-        run: ${GITHUB_WORKSPACE}/.github/scripts/sample.sh
-        shell: bash
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+
