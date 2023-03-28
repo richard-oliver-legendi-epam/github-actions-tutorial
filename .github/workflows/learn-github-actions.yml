@@ -14,7 +14,6 @@ jobs:
         with:
           name: output-log-file
           path: output.log
-jobs:
   example-job2:
     runs-on: ubuntu-22.04
     steps:
