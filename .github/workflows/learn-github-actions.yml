@@ -4,6 +4,7 @@ on: [push]
 jobs:
   example-job:
     name: Save output
+    runs-on: ubuntu-22.04
     steps:
       - shell: bash
         run: |
