@@ -19,3 +19,17 @@ jobs:
           super_secret: ${{ secrets.SUPERSECRET }}
         run: |
           example-command "$super_secret"
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Ran setup..."
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Ran build..."
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Ran test / we're done!"
