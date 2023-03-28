@@ -1,74 +1,26 @@
-name: learn-github-actions
-run-name: ${{ github.actor }} is learning GitHub Actions
-on: [push]
+on:
+  workflow_dispatch:
 env:
-  myNull: ${{ null }}
-  myBoolean: ${{ false }}
-  myIntegerNumber: ${{ 711 }}
-  myFloatNumber: ${{ -9.2 }}
-  myHexNumber: ${{ 0xff }}
-  myExponentialNumber: ${{ -2.99e-2 }}
-  myString: Mona the Octocat
-  myStringInBraces: ${{ 'It''s open source!' }}
-  mascot: Mona
-  super_duper_var: totally_awesome
+  # Setting an environment variable with the value of a configuration variable
+  env_var: ${{ vars.ENV_CONTEXT_VAR }}
+
 jobs:
-  prod-check:
-    if: ${{ github.ref == 'refs/heads/main' }}
-    runs-on: ubuntu-22.04
+  display-variables:
+    name: ${{ vars.JOB_NAME }}
+    # You can use configuration variables with the `vars` context for dynamic jobs
+    if: ${{ vars.USE_VARIABLES == 'true' }}
+    runs-on: ${{ vars.RUNNER }}
+    environment: ${{ vars.ENVIRONMENT_STAGE }}
     steps:
-      - run: echo "Deploying to production server on branch $GITHUB_REF"
-  example-job:
-    name: Save output
-    runs-on: ubuntu-22.04
-    steps:
-      - shell: bash
-        run: |
-          expr 1 + 1 > output.log
-      - name: Upload output file
-        uses: actions/upload-artifact@v3
-        with:
-          name: output-log-file
-          path: output.log
-  example-job2:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Download a single artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: output-log-file
-  dump_contexts_to_log:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Dump GitHub context
-        id: github_context_step
-        run: echo '${{ toJSON(github) }}'
-      - name: Dump job context
-        run: echo '${{ toJSON(job) }}'
-      - name: Dump steps context
-        run: echo '${{ toJSON(steps) }}'
-      - name: Dump runner context
-        run: echo '${{ toJSON(runner) }}'
-      - name: Dump strategy context
-        run: echo '${{ toJSON(strategy) }}'
-      - name: Dump matrix context
-        run: echo '${{ toJSON(matrix) }}'
-  pull_request_ci:
-    runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'pull_request' }}
-    steps:
-      - uses: actions/checkout@v3
-      - run: echo "🍏 This job was kicked on PR"
-  windows_job:
-    runs-on: windows-latest
-    steps:
-      - run: echo 'Hi ${{ env.mascot }}'  # Hi Mona
-      - run: echo 'Hi ${{ env.mascot }}'  # Hi Octocat
-        env:
-          mascot: Octocat
-  linux_job:
-    runs-on: ubuntu-latest
-    env:
-      mascot: Tux
-    steps:
-      - run: echo 'Hi ${{ env.mascot }}'  # Hi Tux
+    - name: Use variables
+      run: |
+        echo "repository variable : ${{ vars.REPOSITORY_VAR }}"
+        echo "organization variable : ${{ vars.ORGANIZATION_VAR }}"
+        echo "overridden variable : ${{ vars.OVERRIDE_VAR }}"
+        echo "variable from shell environment : $env_var"
+
+    - name: ${{ vars.HELLO_WORLD_STEP }}
+      if: ${{ vars.HELLO_WORLD_ENABLED == 'true' }}
+      uses: actions/hello-world-javascript-action@main
+      with:
+        who-to-greet: ${{ vars.GREET_NAME }}
