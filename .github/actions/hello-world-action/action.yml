@@ -1,4 +1,4 @@
 name: 'Quote Of The Day'
 runs:
   using: 'node12' #currently only supports docker or node12
-  main: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+  main: echo "🎉 The job was automatically triggered by an event."
