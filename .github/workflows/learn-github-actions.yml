@@ -19,7 +19,7 @@ jobs:
       - name: Testing bats version
         run: bats -v
       - name: Testing variables
-        run: echo "${{ HOST }}:${{ PORT}}"
+        run: echo "${{ env.HOST }}:${{ env.PORT }}"
         env:
           HOST: localhost
           PORT: 1234
