@@ -1,7 +1,7 @@
 name: 🚀 Github Actions Tutirial Build
 on: [push]
 jobs:
-  Build Site:
+  Build-Site:
     runs-on: ubuntu-22.04
     steps:
       - name: Check out repository code
