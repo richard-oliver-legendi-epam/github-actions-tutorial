@@ -6,9 +6,13 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - run: echo "👋 Be nice"
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Setting up node
+        uses: actions/setup-node@v3
         with:
           node-version: 18.4.0
-      - run: npm install -g bats
-      - run: bats -v
+      - name: Installing bats
+        run: npm install -g bats
+      - name: Testing bats version
+        run: bats -v
