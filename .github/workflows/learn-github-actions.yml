@@ -11,14 +11,6 @@ jobs:
           node-version: '14'
       - run: npm install -g bats
       - run: bats -v
-  example-job-with-secret:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Retrieve secret
-        env:
-          super_secret: ${{ secrets.SUPERSECRET }}
-        run: |
-          example-command "$super_secret"
   setup:
     runs-on: ubuntu-latest
     steps:
