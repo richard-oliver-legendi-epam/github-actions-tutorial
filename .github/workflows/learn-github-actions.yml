@@ -10,6 +10,8 @@ env:
   myExponentialNumber: ${{ -2.99e-2 }}
   myString: Mona the Octocat
   myStringInBraces: ${{ 'It''s open source!' }}
+  mascot: Mona
+  super_duper_var: totally_awesome
 jobs:
   prod-check:
     if: ${{ github.ref == 'refs/heads/main' }}
@@ -57,3 +59,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: echo "🍏 This job was kicked on PR"
+  windows_job:
+    runs-on: windows-latest
+    steps:
+      - run: echo 'Hi ${{ env.mascot }}'  # Hi Mona
+      - run: echo 'Hi ${{ env.mascot }}'  # Hi Octocat
+        env:
+          mascot: Octocat
+  linux_job:
+    runs-on: ubuntu-latest
+    env:
+      mascot: Tux
+    steps:
+      - run: echo 'Hi ${{ env.mascot }}'  # Hi Tux
