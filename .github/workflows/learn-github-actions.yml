@@ -18,3 +18,5 @@ jobs:
         run: npm install -g bats
       - name: Testing bats version
         run: bats -v
+      - name: My first Docker
+        uses: docker://alpine:3.8
