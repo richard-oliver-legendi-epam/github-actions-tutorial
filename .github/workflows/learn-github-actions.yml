@@ -3,6 +3,7 @@ run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
 jobs:
   example-job:
+    runs-on: ubuntu-22.04
     steps:
       - name: Run build script
         run: ./.github/scripts/sample.sh
